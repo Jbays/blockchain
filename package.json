@@ -1,0 +1,27 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "a simple blockchain implementation in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jbays/blockchain-js.git"
+  },
+  "keywords": [
+    "blockchain",
+    "javascript"
+  ],
+  "author": "jbays",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jbays/blockchain-js/issues"
+  },
+  "homepage": "https://github.com/Jbays/blockchain-js#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
