@@ -1,10 +1,19 @@
-class Blockchain {
+const SHA256 = require('crypto-js/sha256');
 
-  addBlock(){
-    
+class Block {
+  constructor(index,timestamp,data,previousHash=''){
+    this.index = index;
+    this.timestamp = timestamp;
+    this.data = data;
+    this.previousHash = previousHash;
+    this.hash = '';
+  }
+
+  calculateHash(){
+
   }
 
 }
 
 
-module.exports = Blockchain
+module.exports = Block;
