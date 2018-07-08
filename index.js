@@ -15,5 +15,18 @@ class Block {
 
 }
 
+class Blockchain {
+  constructor(){
+    this.chain = [this.createGenesisBlock()];
+  }
 
-module.exports = Block;
+  createGenesisBlock(){
+    return new Block(0,'8 july 2018','genesis block','0')
+  }
+}
+
+
+module.exports = {
+  Block,
+  Blockchain
+};

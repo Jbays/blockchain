@@ -1,7 +1,8 @@
 const expect = require('chai').expect
-const Block = require('./index');
+const BlockFunctions = require('./index');
 
 describe('the Block should',()=>{
+  const Block = BlockFunctions.Block;
   let newBlock0 = new Block(1,"01 july 2018",{amount:4},"1234")
   let newBlock1 = new Block(1,"01 july 2018",{amount:4},"1235")
 
@@ -22,13 +23,23 @@ describe('the Block should',()=>{
   })
 
 
-  // it('keep a history of transactions (in form of array)',()=>{
-  //   expect(Array.isArray(newCoin.chain)).to.equal(true);
-  // })
-
-  // describe('add new blocks',()=>{
-  // })
-
 })
 
-// describe('the Blockchain should',()=>{})
+describe('the Blockchain should',()=>{
+  const Blockchain = BlockFunctions.Blockchain;
+
+  it('create a genesis block',()=>{
+    let whatever = new Blockchain();
+    const genesisBlockTemplate = {
+       index: 0,
+       timestamp: '8 july 2018',
+       data: 'genesis block',
+       previousHash: '0',
+       hash: '22535b454cf279f06c86c8e5c7bf43df609d482836befb4fc5dee8595a956dce' };
+    whatever.createGenesisBlock();
+
+    expect(whatever.chain[0].data).to.equal('genesis block');
+    expect(whatever.chain[0].hash).to.equal('22535b454cf279f06c86c8e5c7bf43df609d482836befb4fc5dee8595a956dce');
+  })
+  
+})
