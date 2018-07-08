@@ -23,6 +23,10 @@ class Blockchain {
   createGenesisBlock(){
     return new Block(0,'8 july 2018','genesis block','0')
   }
+
+  addBlock(inputBlock){
+
+  }
 }
 
 
