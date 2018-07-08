@@ -24,8 +24,14 @@ class Blockchain {
     return new Block(0,'8 july 2018','genesis block','0')
   }
 
-  addBlock(inputBlock){
+  getLatestBlock(){
+    return this.chain[this.chain.length-1];
+  }
 
+  addBlock(inputBlock){
+    inputBlock.previousHash = this.getLatestBlock().hash;
+    inputBlock.hash = inputBlock.calculateHash();
+    this.chain.push(inputBlock);
   }
 }
 

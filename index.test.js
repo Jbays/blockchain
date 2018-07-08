@@ -1,5 +1,7 @@
 const expect = require('chai').expect
 const BlockFunctions = require('./index');
+const _ = require('underscore');
+
 const Block = BlockFunctions.Block;
 const Blockchain = BlockFunctions.Blockchain;
 
@@ -41,17 +43,21 @@ describe('the Blockchain should',()=>{
 })
 
 describe('justinCoin should',()=>{
+  const justinCoin = new Blockchain();
+  justinCoin.createGenesisBlock();
+  justinCoin.addBlock(new Block(1,'9 july 2018',{amount: 2}));
+  justinCoin.addBlock(new Block(2,'10 july 2018',{amount: 5}));
 
   it('should add new blocks',()=>{
-
-    const justinCoin = new Blockchain();
-    justinCoin.createGenesisBlock();
-    justinCoin.addBlock(2,'9 july 2018','3',justinCoin.chain[0].hash);
-    justinCoin.addBlock(2,'10 july 2018','5',justinCoin.chain[1].hash)
-    // console.log('justinCoin.chain[1]',justinCoin.chain[1])
-
-    // expect(justinCoin)
-
+    expect(justinCoin.chain[1]).to.exist;
+    expect(justinCoin.chain[2]).to.exist;
+  })
+  it('new blocks should adhere to schema',()=>{
+    const keys = ['index', 'timestamp', 'data', 'previousHash', 'hash'];
+    //NOTE: real blockOne is the genesis block
+    const blockOneKeys = Object.keys(justinCoin.chain[1])
+    //checks that no difference exists between block keys
+    expect(_.difference(keys,blockOneKeys).length).to.equal(0);
   })
 
 })
